@@ -1,4 +1,10 @@
 import React from 'react';
-import {createRoot} from 'react-dom/client'
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { App } from './components';
 
-createRoot(document.querySelector('#App')).render(<h1>hi</h1>)
+createRoot(document.querySelector('#App')).render(
+<BrowserRouter>
+    <App />
+</BrowserRouter>
+);

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Navbar, Login, Posts, Welcome } from './Index';
+import { Navbar, Login, Posts, Welcome } from './index';
 
 const App = () => {
     const [posts, setPosts] = useState([]);
@@ -15,7 +15,7 @@ const App = () => {
         <h1>Hello from app js</h1>
         <Routes>
             <Route path='./' element={<Welcome user={user} isLoggedIn={isLoggedIn}/>}/>
-            <Route path='./login' element=
+            <Route path='./Login' element=
                 {<Login 
                 token={token} 
                 setToken={setToken} 

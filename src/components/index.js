@@ -1,5 +1,5 @@
 export {default as App} from './app';
-export {default as Navbar} from './navbar';
+export {default as Navbar} from './Navbar';
 export {default as Login} from './Login';
-export {default as Posts} from './posts';
-export {default as Welcome} from './welcome';
+export {default as Posts} from './Posts';
+export {default as Welcome} from './Welcome';
