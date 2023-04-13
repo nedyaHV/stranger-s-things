@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Navbar, Login, Posts, Welcome } from './index';
+import { Navbar, Login, Posts, Welcome, LoginRegister, } from './index';
 
 const App = () => {
     const [posts, setPosts] = useState([]);
@@ -14,8 +14,8 @@ const App = () => {
         <Navbar/>
         <h1>Hello from app js</h1>
         <Routes>
-            <Route path='./' element={<Welcome user={user} isLoggedIn={isLoggedIn}/>}/>
-            <Route path='./Login' element=
+            <Route path='/' element={<Welcome user={user} isLoggedIn={isLoggedIn}/>}/>
+            <Route path='/Login' element=
                 {<Login 
                 token={token} 
                 setToken={setToken} 
@@ -23,8 +23,9 @@ const App = () => {
                 setUser={setUser} 
                 isLoggedIn={isLoggedIn} 
                 setIsLoggedIn={setIsLoggedIn}
-            />}/>
-            <Route path='./posts' element={<Posts posts={posts} setPosts={setPosts}/>} />
+            /> }/>
+            <Route path='/posts' element={<Posts posts={posts} setPosts={setPosts}/>} />
+            <Route path='/register' element={<LoginRegister/> } />
         </Routes>
         </>
     );
