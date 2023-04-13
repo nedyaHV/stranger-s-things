@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Navbar, Login, Posts, Welcome, LoginRegister, } from './index';
+import getPosts from '../api/index';
 
 const App = () => {
     const [posts, setPosts] = useState([]);
@@ -8,6 +9,20 @@ const App = () => {
     const [token, setToken] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+    useEffect(() => {
+        const fetchPosts= async() => {
+            const fetchedPosts = await getPosts();
+            setPosts(fetchedPosts);
+            console.log(fetchedPosts);
+            // if (token) {
+            //     const fetchedUser = await getMe(token);
+            //     setUser(fetchedUser.user);
+            //     setIsLoggedIn(true);
+            //     navigate('/posts');
+            return;
+        } 
+        fetchPosts()
+    }, []);
 
     return (
         <>
