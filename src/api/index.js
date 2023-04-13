@@ -4,7 +4,7 @@ const BASE_URL = `https://strangers-things.herokuapp.com/api/2303-FTB-ET-WEB-FT`
 
 
 
-const getPosts = async() => {
+export const getPosts = async() => {
     try {
         const response = await fetch(`${BASE_URL}/posts`)
         const data = await response.json();
@@ -15,5 +15,3 @@ const getPosts = async() => {
         console.error(error)
     };
 }
-
-export default getPosts();
