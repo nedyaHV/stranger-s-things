@@ -9,9 +9,11 @@ const Posts = ( {posts, setPosts} ) => {
         {posts.map((post) => {
             return (
               <article key={post._id}>
-                <h2>{post.title}</h2>
-                <p>{post.body}</p>
-                <p>Author id: {post.userId}</p>
+                <h2>{post.title} By: {post.author.username}</h2>
+                <p>{post.price}</p>
+                <p>{post.description}</p>
+
+                <input type="checkbox" id='delivery' name="vehicle1" value=""></input>
               </article>
             );
           })}
