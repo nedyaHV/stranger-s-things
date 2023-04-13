@@ -1,14 +1,14 @@
 import React from 'react';
 
 
-const Posts = ( posts, setPosts ) => {
+const Posts = ( {posts, setPosts} ) => {
     //console.log(posts)
     return (
     <>
         <h1>this is from posts</h1>
         {posts.map((post) => {
             return (
-              <article key={post.id}>
+              <article key={post._id}>
                 <h2>{post.title}</h2>
                 <p>{post.body}</p>
                 <p>Author id: {post.userId}</p>
