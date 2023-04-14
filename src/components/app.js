@@ -59,6 +59,7 @@ const App = () => {
                 setPosts={setPosts}
                 isLoggedIn={isLoggedIn}
                 user={user}
+                token={token}
                 />} />
             <Route path='/register' element=
             {<Register
