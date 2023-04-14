@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Navbar, Login, Posts, Welcome, LoginRegister, } from './index';
+import { Navbar, Login, Posts, Welcome, Register } from './index';
 import { getPosts } from '../api';
+import { getMe } from '../api/auth';
 
 const App = () => {
     const [posts, setPosts] = useState([]);
     const [user, setUser] = useState({});
-    const [token, setToken] = useState('');
+    const [token, setToken] = useState(localStorage.token);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
@@ -14,14 +15,22 @@ const App = () => {
             const {data} = await getPosts();
             setPosts(data.posts);
             console.log(data.posts);
-            // if (token) {
-            //     const fetchedUser = await getMe(token);
-            //     setUser(fetchedUser.user);
-            //     setIsLoggedIn(true);
-            //     navigate('/posts');
+           if(token) {
+            const fetchedUser = await getMe(token)
+            setUser(fetchedUser);
+            setIsLoggedIn(true);
+           }
         };
         fetchPosts();
     }, []);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            const fetchedUser = await getMe(token);
+            setUser(fetchedUser);
+        }
+            fetchUser();
+    }, [token])
 
     return (
         <>
@@ -51,7 +60,15 @@ const App = () => {
                 isLoggedIn={isLoggedIn}
                 user={user}
                 />} />
-            <Route path='/register' element={<LoginRegister/> } />
+            <Route path='/register' element=
+            {<Register
+                token={token} 
+                setToken={setToken} 
+                user={user} 
+                setUser={setUser} 
+                isLoggedIn={isLoggedIn} 
+                setIsLoggedIn={setIsLoggedIn}
+                /> } />
         </Routes>
         </>
     );

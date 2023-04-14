@@ -9,7 +9,9 @@ const Posts = ( {posts, setPosts} ) => {
         {posts.map((post) => {
             return (
               <article key={post._id}>
-                <h2>{post.title} By: {post.author.username}</h2>
+                <h2>Seller - {post.author.username}</h2>
+                <h3>Location - {post.location}</h3>
+                <h2>{post.title}</h2>
                 <p>{post.price}</p>
                 <p>{post.description}</p>
 

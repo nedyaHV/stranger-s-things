@@ -1,27 +1,9 @@
 import React, {useState, useEffect} from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { loginUser } from "../api/auth";
+import { registerUser } from "../api/auth";
 
-// const grim = {
-//     posts: [],
-//     messages: [],
-//     _id: '643593cc3fc91b00165887bc',
-//     username: 'Grim',
-//     cohort: '642762a8cd3bfb0016200646',
-//     __v: 0,
-//   };
 
-  // const fakeResponse = {
-  //   success: true,
-  //   error: null,
-  //   data: {
-  //     token:
-  //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDM1OTNjYzNmYzkxYjAwMTY1ODg3YmMiLCJ1c2VybmFtZSI6IkdyaW0iLCJpYXQiOjE2ODEyMzI4NDR9.Y7wkSa9dGh3JohOLEegM3rp52pyLy1F1-ktvsFDQhNA',
-  //     message: 'Thanks for signing up for our service.',
-  //   },
-  // };
-
-const Login = ({ user, setUser, token, setToken, isLoggedIn,
+const Register = ({ user, setUser, token, setToken, isLoggedIn,
      setIsLoggedIn }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -33,7 +15,7 @@ const Login = ({ user, setUser, token, setToken, isLoggedIn,
 
             const userAuth = {user: {username: username, password:password} };
             //Example below
-            const data = await loginUser(userAuth);
+            const data = await registerUser(userAuth);
 
             if(data.token) {
                 setToken(data.token)
@@ -42,7 +24,7 @@ const Login = ({ user, setUser, token, setToken, isLoggedIn,
             }
             setUsername("");
             setPassword("");
-            navigate("/posts");
+            navigate("/login");
         }
 
     return (
@@ -52,11 +34,10 @@ const Login = ({ user, setUser, token, setToken, isLoggedIn,
             onChange = {(event) => setUsername(event.target.value)} />
             <input type="text" placeholder="Password" value={password} 
             onChange = {(event) => setPassword(event.target.value)} />
-            <button type="submit">Login</button>
+            <button type="submit">Signup</button>
         </form>
-        <a href="/register">Do you have an account? Sign up here!</a>
     </>
     );
 };
 
-export default Login;
+export default Register;
