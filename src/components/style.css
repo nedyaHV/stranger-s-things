@@ -1,24 +1,26 @@
 /* Colors */
 /* Color Theme Swatches in Hex */
-.Flambette---Website-1-hex { color: #0460D9; }
-.Flambette---Website-2-hex { color: #117CD9; }
-.Flambette---Website-3-hex { color: #274001; }
-.Flambette---Website-4-hex { color: #A2A685; }
-.Flambette---Website-5-hex { color: #F2F2F2; }
+.color-theme_Yoder-1-hex { color: #233D40; }
+.color-theme_Yoder-2-hex { color: #486F73; }
+.color-theme_Yoder-3-hex { color: #6AA0A6; }
+.color-theme_Yoder-4-hex { color: #9AD2D9; }
+.color-theme_Yoder-5-hex { color: #C9D9A7; }
 
 /* Color Theme Swatches in RGBA */
-.Flambette---Website-1-rgba { color: rgba(4, 96, 217, 1); }
-.Flambette---Website-2-rgba { color: rgba(17, 124, 217, 1); }
-.Flambette---Website-3-rgba { color: rgba(39, 64, 1, 1); }
-.Flambette---Website-4-rgba { color: rgba(162, 166, 133, 1); }
-.Flambette---Website-5-rgba { color: rgba(242, 242, 242, 1); }
+.color-theme_Yoder-1-rgba { color: rgba(35, 61, 64, 1); }
+.color-theme_Yoder-2-rgba { color: rgba(72, 111, 115, 1); }
+.color-theme_Yoder-3-rgba { color: rgba(106, 160, 166, 1); }
+.color-theme_Yoder-4-rgba { color: rgba(154, 210, 217, 1); }
+.color-theme_Yoder-5-rgba { color: rgba(201, 217, 167, 1); }
 
 /* Color Theme Swatches in HSLA */
-.Flambette---Website-1-hsla { color: hsla(214, 96, 43, 1); }
-.Flambette---Website-2-hsla { color: hsla(207, 85, 45, 1); }
-.Flambette---Website-3-hsla { color: hsla(83, 96, 12, 1); }
-.Flambette---Website-4-hsla { color: hsla(67, 15, 58, 1); }
-.Flambette---Website-5-hsla { color: hsla(0, 0, 94, 1); }
+.color-theme_Yoder-1-hsla { color: hsla(186, 29, 19, 1); }
+.color-theme_Yoder-2-hsla { color: hsla(185, 22, 36, 1); }
+.color-theme_Yoder-3-hsla { color: hsla(186, 25, 53, 1); }
+.color-theme_Yoder-4-hsla { color: hsla(186, 45, 72, 1); }
+.color-theme_Yoder-5-hsla { color: hsla(79, 39, 75, 1); }
+
+
 
 
 * {
@@ -28,10 +30,11 @@
 }
 
 body {
-    background-color: #F2F2F2;
+    background-color: #9AD2D9;
     height: 99vh;
 }
 
+/* ------------Navbar------------ */
 .navbar {
     display: flex;
     align-items: center;
@@ -40,11 +43,11 @@ body {
 }
 
 .navhead {
-    font-size: 40px;
+    font-size: 60px;
 }
 
 .navlinks {
-    font-size: 30px;
+    font-size: 40px;
     color: black;
     padding: 10px; 
 }
@@ -55,6 +58,41 @@ body {
 
 .navlinks:last-child {
     border-left: 2px black solid;
+}
+
+/* ------------Login------------ */
+
+.login {
+    display: flex;
+    justify-content: center;
+}
+
+.loginform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #;
+    border: 1px solid #BFBCBA;
+    border-radius: 25px;
+    width: 40vw;
+}
+
+.loginheader {
+    color: black;
+    font-size: 40px;
+}
+
+.loginparams {
+    width: 30vw;
+}
+
+.loginbutton {
+    width: 10vw;
+}
+
+input {
+    height: 40px;
+    margin: 10px;
 }
 
 

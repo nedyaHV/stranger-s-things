@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Navbar, Login, Posts, Welcome, Register } from './index';
+import { Navbar, Login, Posts, Welcome, Register, CreatePost } from './index';
 import { getPosts } from '../api';
 import { getMe } from '../api/auth';
 
@@ -14,7 +14,7 @@ const App = () => {
         const fetchPosts= async() => {
             const {data} = await getPosts();
             setPosts(data.posts);
-            console.log(data.posts);
+            // console.log(data.posts);
            if(token) {
             const fetchedUser = await getMe(token)
             setUser(fetchedUser);
@@ -35,7 +35,7 @@ const App = () => {
     return (
         <>
         <Navbar/>
-        <h1>Hello from app js</h1>
+        {/* <h1>Hello from app js</h1> */}
         <Routes>
             <Route path='/' element=
                {<Welcome 
@@ -70,6 +70,13 @@ const App = () => {
                 isLoggedIn={isLoggedIn} 
                 setIsLoggedIn={setIsLoggedIn}
                 /> } />
+            <Route path='/createpost'  element=
+            {<CreatePost
+                posts={posts}
+                setPosts={setPosts}
+                isLoggedIn={isLoggedIn}
+                token={token}
+            /> } />
         </Routes>
         </>
     );
