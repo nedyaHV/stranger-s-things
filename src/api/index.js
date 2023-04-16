@@ -27,7 +27,7 @@ export const createNewPost = async(newPost, token) => {
              body: JSON.stringify(newPost),
          });
          const result = await response.json();
-         //console.log(result);
+        //  console.log(result);
          return result;
      }catch (error) {
          console.error(error)
@@ -52,11 +52,11 @@ export const updateEntirePost = async(post, token, POST_ID) => {
     }
 };
 
-export const deletePost = async(postIdToDelete, token) => {
+export const deletePost = async(postId, token) => {
     try {
         
 
-        const response = await fetch(`${BASE_URL}/posts/${postIdToDelete}`,{
+        const response = await fetch(`${BASE_URL}/posts/${postId}`,{
             method:'DELETE',
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
@@ -64,7 +64,7 @@ export const deletePost = async(postIdToDelete, token) => {
             },
         });
         const data = await response.json();
-        console.log(data)
+        // console.log(data)
         return data;
         
     }catch (error) {

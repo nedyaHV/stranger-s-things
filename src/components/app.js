@@ -34,8 +34,13 @@ const App = () => {
 
     return (
         <>
-        <Navbar/>
-        {/* <h1>Hello from app js</h1> */}
+        {<Navbar 
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+        setUser={setUser}
+        setToken={setToken}
+        />}
+        
         <Routes>
             <Route path='/' element=
                {<Welcome 

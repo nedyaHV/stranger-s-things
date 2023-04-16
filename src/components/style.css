@@ -39,7 +39,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 2px black solid;
+    border-bottom: 2px #233D40 solid;
 }
 
 .navhead {
@@ -53,41 +53,45 @@ body {
 }
 
 .navlinks:first-child {
-    border-right: 2px black solid;
+    border-right: 2px #486F73 solid;
 }
 
 .navlinks:last-child {
-    border-left: 2px black solid;
+    border-left: 2px #486F73 solid;
 }
 
-/* ------------Login------------ */
+/* ------------Login/Posts Create Forms------------ */
 
-.login {
+a {
+    color: blueviolet;
+}
+
+.formdisplay {
     display: flex;
     justify-content: center;
 }
 
-.loginform {
+.form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #;
-    border: 1px solid #BFBCBA;
+    background-color: #6AA0A6;
+    border: 2px solid #486F73;
     border-radius: 25px;
-    width: 40vw;
-}
-
-.loginheader {
-    color: black;
-    font-size: 40px;
-}
-
-.loginparams {
+    margin-top: 50px;
     width: 30vw;
 }
 
-.loginbutton {
-    width: 10vw;
+.formheader {
+    font-size: 40px;
+}
+
+.formparams {
+    width: 25vw;
+}
+
+.formbutton {
+    width: 8vw;
 }
 
 input {
@@ -95,5 +99,46 @@ input {
     margin: 10px;
 }
 
+/* ------------Posts Display------------ */
 
+article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #6AA0A6;
+    border: 2px solid #486F73;
+    border-radius: 25px;
+    width: 35vw;
+    margin-top: 20px;
+}
 
+.headerbody {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.postheader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    padding-bottom: 10px;
+    border-bottom: #486F73 2px solid;
+}
+
+.posthead {
+    font-size: 40px;
+}
+
+/* ------------Posts------------ */
+
+.posttitle {
+    font-size: 30px;
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+    text-align: center;
+}

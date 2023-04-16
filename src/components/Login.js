@@ -29,14 +29,14 @@ const Login = ({ user, setUser, token, setToken, isLoggedIn,
 
     return (
         <>
-        <div className="login">
-        <form className="loginform" onSubmit={handleSubmit}>
-            <h2 className="loginheader">Login</h2>
-            <input className="loginparams" type="text" placeholder="Username" value={username}
+        <div className="formdisplay">
+        <form className="form" onSubmit={handleSubmit}>
+            <h2 className="formheader">Login</h2>
+            <input className="formparams" type="text" placeholder="Username" value={username}
             onChange = {(event) => setUsername(event.target.value)} />
-            <input className="loginparams" type="text" placeholder="Password" value={password} 
+            <input className="formparams" type="text" placeholder="Password" value={password} 
             onChange = {(event) => setPassword(event.target.value)} />
-            <button className="loginbutton" type="submit">Login</button>
+            <button className="formbutton" type="submit">Login</button>
             <a href="/register">Do you have an account? Sign up</a>
         </form>
         </div>

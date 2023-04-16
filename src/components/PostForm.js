@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { createNewPost } from "../api";
 
 const CreatePost = ( {posts, setPosts, isLoggedIn, token}) => {
@@ -7,6 +8,8 @@ const CreatePost = ( {posts, setPosts, isLoggedIn, token}) => {
     const [price, setPrice] = useState("")
     const [location, setLocation] = useState("")
     // const [deliver, setWillDeliver] = useState(false)
+
+    const navigate = useNavigate();
     
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -27,21 +30,23 @@ const CreatePost = ( {posts, setPosts, isLoggedIn, token}) => {
         setDescription("")
         setPrice("")
         setLocation("")
+        navigate("/posts")
          
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Title" value={title}
+        <div className="formdisplay">
+            <form className="form" onSubmit={handleSubmit}>
+                <h2 className="formheader">Create Post</h2>
+                <input className="formparams" type="text" placeholder="Title" value={title}
                 onChange={(event) => setTitle(event.target.value)} />
-                <input type="text" placeholder="Description" value={description}
+                <input className="formparams" type="text" placeholder="Description" value={description}
                 onChange={(event) => setDescription(event.target.value)} />
-                <input type="text" placeholder="Price" value={price}
+                <input className="formparams" type="text" placeholder="Price" value={price}
                 onChange={(event) => setPrice(event.target.value)} />
-                <input type="text" placeholder="Location" value={location}
+                <input className="formparams" type="text" placeholder="Location" value={location}
                 onChange={(event) => setLocation(event.target.value)} />
-                <button type="submit">Submit</button>
+                <button className="formbutton" type="submit">Submit</button>
             </form>
         </div>
     )
