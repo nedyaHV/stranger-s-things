@@ -1,117 +1,80 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { createNewPost, updateEntirePost, deletePost } from '../api';
-import { getMe } from '../api/auth';
 import CreateUpdatePost from './CreatePost';
 
-const Posts = ({ posts, setPosts, isLoggedIn, username, token, _id }) => {
-	const postId = 1;
-	const postId2 = 2;
-	const postId3 = 3;
+const Posts = ({ posts, setPosts, isLoggedIn, user, username, token, _id }) => {
 
 	const [postToUpdate, setPostToUpdate] = useState(null);
 	const [showForm, setShowForm] = useState(false);
 
-	const postToCreate = {
-		post: {
-			title: 'Our New Post',
-			price: 'this is the price',
-			description: 'description',
-		},
-	};
-	const postToCompletelyUpdate = {
-		post: {
-			title: 'updated post',
-			price: 'updated price',
-			description: 'updated description',
-		},
-	};
-	//console.log(posts)
+	const navigate = useNavigate();
 
-	// get me and save the username
+	// useEffect(() => {
+	// 	let postsByUser = [];
 
-	useEffect(() => {
-		let postsByUser = [];
+	// 	if (isLoggedIn) {
+	// 		const savedUsername = localStorage.getItem('username');
+	// 		postsByUser = posts.filter(
+	// 			(post) => post.author.username === savedUsername
+	// 		);
+	// 		console.log('users posts', postsByUser.length);
+	// 	}
+	// }, []);
 
-		if (isLoggedIn) {
-			const savedUsername = localStorage.getItem('username');
-			postsByUser = posts.filter(
-				(post) => post.author.username === savedUsername
-			);
-			console.log('users posts', postsByUser.length);
-		}
-	}, []);
+	// const deletePostHandler = async (e) => {
+	// 	const response = await deletePost(
+	// 		e.target.id,
+	// 		localStorage.getItem('token')
+	// 	);
 
-	const deletePostHandler = async (e) => {
-		const response = await deletePost(
-			e.target.id,
-			localStorage.getItem('token')
-		);
+	// 	if (response) {
+	// 		const filtered = posts.filter((post) => post._id != e.target.id);
 
-		if (response) {
-			const filtered = posts.filter((post) => post._id != e.target.id);
+	// 		setPosts((prev) => [...filtered]);
+	// 	}
+	// };
 
-			setPosts((prev) => [...filtered]);
-		}
-	};
-
-	const updatePostHandler = (e) => {
-		setPostToUpdate(posts.find((post) => post._id == e.target.id));
-		setShowForm(true);
-	};
+	// const updatePostHandler = (e) => {
+	// 	setPostToUpdate(posts.find((post) => post._id == e.target.id));
+	// 	setShowForm(true);
+	// };
 
 	return (
 		<>
-			{showForm && (
-				<CreateUpdatePost
-					posts={posts}
-					setPosts={setPosts}
-					isLoggedIn={isLoggedIn}
-					token={token}
-					postToUpdate={postToUpdate}
-					setShowForm={setShowForm}
-				/>
-			)}
 			{isLoggedIn ? (
 				<>
-					<h1>logged in</h1>
-					<button
-						onClick={async () => {
-							const newPost = await createNewPost(postToCreate, token);
-							setPosts([newPost.data.post, ...posts]);
-						}}
-					>
+				<div className='headerbody'>
+					<div className='postheader'>
+					<h1 className='posthead'>Hello, {user.username}! Welcome back</h1>
+					<button onClick={() => {
+						navigate("/createpost");
+					}}>
 						Create New Post
 					</button>
-					{/* <button onClick={async () => {
-              const updatedPost = await updateEntirePost(post._id, postToCompletelyUpdate);
-
-              const listToReturn = posts.filter(post => post._id !== updatedPost.post._id)
-              setPosts([updatedPost, ...listToReturn])
-            }}
-            >Update PUT Post</button> */}
-					<button>Update Patch Post</button>
 					<button
 						onClick={async () => {
-							await deletePost(_id);
+							await deletePost(token);
 							setPosts([...posts.filter((post) => post.id !== { post })]);
 						}}
 					>
 						Delete Post
 					</button>
+					</div>
+				</div>
 
 					{posts.map((post) => {
 						return (
+							<div className='headerbody'>
 							<article key={post._id}>
-								<h2>{post.title}</h2>
+								<h2 className='posttitle'>
+									{post.title} By: {post.author.username}
+								</h2>
 								<p>{post.price}</p>
 								<p>{post.description}</p>
+								<p>{post.location}</p>
+								<p>{post.willDeliver}</p>
 
-								<input
-									type='checkbox'
-									id='delivery'
-									name='vehicle1'
-									value=''
-								></input>
 								{post.author.username === localStorage.getItem('username') && (
 									<button id={post._id} onClick={deletePostHandler}>
 										Delete
@@ -124,28 +87,31 @@ const Posts = ({ posts, setPosts, isLoggedIn, username, token, _id }) => {
 									</button>
 								)}
 							</article>
+							</div>
 						);
 					})}
 				</>
 			) : (
 				<>
-					<h1>Hello Guest!</h1>
-
+				<div className='headerbody'>
+					<div className='postheader'>
+						<h1 className='posthead'>Hello Guest!</h1>
+						<p>Please log in to create a new post!</p>
+					</div>
+				</div>
 					{posts.map((post) => {
 						return (
+							<div className='headerbody'>
 							<article key={post._id}>
-								<h2>
+								<h2 className='posttitle'>
 									{post.title} By: {post.author.username}
 								</h2>
 								<p>{post.price}</p>
 								<p>{post.description}</p>
-								<input
-									type='checkbox'
-									id='delivery'
-									name='vehicle1'
-									value=''
-								></input>
+								<p>{post.location}</p>
+								<p>{post.willDeliver}</p>
 							</article>
+							</div>
 						);
 					})}
 				</>

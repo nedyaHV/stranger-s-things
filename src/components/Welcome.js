@@ -6,9 +6,9 @@ const Welcome = (props) => {
     return (
     <> 
     {isLoggedIn ? (
-    <h1> hello, {user.username}! Welcome back</h1>
+    <h1 className='headerbody'> Hello, {user.username}! </h1>
     ) : (
-        <h1>please log in</h1>
+        <h1 className='headerbody'>Please log in to get started!</h1>
     )}
     </>
     );
